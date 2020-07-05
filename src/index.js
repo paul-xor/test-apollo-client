@@ -44,19 +44,47 @@ client.query({
     query: getShipments
 }).then((response) => {
     console.log(response.data);
-
     let html = ''
-
     // html += response.data.shipments.shipments[0];
 
     response.data.shipments.shipments.forEach((shipment) => {
         html += ` 
             <div>
                 <h4>${shipment.shipmentId} - ${shipment.customer.useName}</h4>
-                <h5>${shipment.packages.length}</h5>
-                
+                <h5>Packages: ${shipment.packages.length}</h5>
+
             </div>
         `
     })
     document.getElementById('shipments').innerHTML = html;
+})
+
+const getUsers = gql`
+query listUsers($skip:Int, $limit:Int) {
+  users(skip:$skip, limit: $limit) {
+    count
+    users{
+      id
+      email
+      firstName
+      lastName
+    }
+  }
+}
+`
+
+client.query({ query: getUsers }).then((response) => {
+    //console.log(response.data);
+
+    let html = ''
+    response.data.users.users.forEach((user) => {
+        html += `
+            <div>
+                <h5>User: ${user.id}, email: ${user.email}</h5>
+                <p> firstName: ${user.firstName}, lastName: ${user.lastName}</p>
+            </div>
+        `
+    })
+
+    document.getElementById('users').innerHTML = html;
 })
