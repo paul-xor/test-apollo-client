@@ -4,7 +4,7 @@ const client = new ApolloBoost({
     uri: 'http://localhost:9090/graphql',
     request: (operation) => {
         // const token = localStorage.getItem('token')
-        const token = `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1EaEdSRFpGTWpVM05qRTROemsxUWtaQ05rTTBRalZFTkRsRU0wUTBRalZHUVRjek56QkdSQSJ9.eyJpc3MiOiJodHRwczovL2x5ZnRzaGlwcGluZy10ZXN0LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZGZkNDM5NjQ5ZDcwMjE1YjY1MTRhZjUiLCJhdWQiOiJGczVPNldRMEFyRHJQS0U4Y3phaXBKVzhmRTYxVFNQRiIsImlhdCI6MTU5Mzk3MTcxOCwiZXhwIjoxNTk0MDA3NzE4LCJhdF9oYXNoIjoiMGNqbEtFRkhaT0xOY2QwZDJOejhpUSIsIm5vbmNlIjoiRk9ZfnkxSk1NdHFObU1NNzdza0w4U1VnT0MyTnF1WC4ifQ.Ot7Ynrm6DNWpzN6k_nD940FPTBJV_pmCIs51QmRCxvt_czRbVyRo2mynIBn5L9l0-NYVO1hBMy8I3cmbI8GbkblmUeWfnP6zQIITPFmhlLk4NNgZsEW1VYOVrNYFlVZLRtzlpgGYc9Wy67gNv8RfemOsuEC6a0p10vXwiF_T-46_Ws8_E8U876MCEwdTZsp54WPzskJzy4jBobTsXepdmhrZZMEfmvANL7GYsVQreajc_4J8M5Gcy0Qf2WJWSxkiYRHEAN-TUbIVQWnz1gi02cPDaHVODDGewNYz7Dx2DSncSotFW36vrm6d_tdLZYA27l8K7VlIiYHBpPtqRhEzLQ`
+        const token = `eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCIsImtpZCI6Ik1EaEdSRFpGTWpVM05qRTROemsxUWtaQ05rTTBRalZFTkRsRU0wUTBRalZHUVRjek56QkdSQSJ9.eyJpc3MiOiJodHRwczovL2x5ZnRzaGlwcGluZy10ZXN0LmF1dGgwLmNvbS8iLCJzdWIiOiJhdXRoMHw1ZjAyMzViM2IwN2U5MDAwMTllYmEzMzgiLCJhdWQiOiJGczVPNldRMEFyRHJQS0U4Y3phaXBKVzhmRTYxVFNQRiIsImlhdCI6MTYwNDUxODIzMywiZXhwIjoxNjA0NTU0MjMzLCJhdF9oYXNoIjoiYlV2cEhhTnZ3ZFhBTTBoWFNPaUhCdyIsIm5vbmNlIjoicWxtenNuZ1h6Uk1qd09mdUwwNGVPVjR1ZmxjSWI3cmcifQ.BcR6UFvBcPOSQWZ8yJXCozjLCnWi6SgyqwfqNxTHCD_yZtbmIMeU3uenYyBWjRcMz7-s4gYh3IACUSgx_RbuMU02PrxQ9uJr33R0BydG6j8qhNi6UqB75s1QCD3kGagmfIZr_WnBuV03qq1hfvohRQWaZncrpv4T4fiBI1lt-ctwCdoCR2BCzkgRAf6rt6UOJwhPSYHUn_gJ6_VusQAJCqIXn-6aLIUc1E5ZLVibhsUIceuXY2MTY6lpclicVKJdaX6cngFeP3QdzSi0TMYXI8CJgbzF_bVsbVgUNSl5OhVOHUgSu8TX3-AeSs9yyYlBPiaM1LTNTdulHlcIKo8jJQ`
         operation.setContext({
             headers: {
                 authorization: token ? `Bearer ${token}` : ''
@@ -48,7 +48,7 @@ client.query({
     // html += response.data.shipments.shipments[0];
 
     response.data.shipments.shipments.forEach((shipment) => {
-        html += ` 
+        html += `
             <div>
                 <h4>${shipment.shipmentId} - ${shipment.customer.useName}</h4>
                 <h5>Packages: ${shipment.packages.length}</h5>
